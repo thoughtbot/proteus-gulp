@@ -1,9 +1,11 @@
 var gulp = require('gulp'),
   concat = require('gulp-concat'),
+  haml = require('gulp-ruby-haml'),
   sass = require('gulp-ruby-sass'),
   neat = require('node-neat').includePaths;
 
 var paths = {
+  haml: './source/views/*.haml',
   js: './source/assets/javascripts/*.js',
   scss: './source/assets/stylesheets/*.scss'
 };
@@ -32,6 +34,12 @@ function notifyLiveReload(event) {
   });
 }
 
+gulp.task('views', function () {
+  gulp.src(paths.haml)
+    .pipe(haml())
+    .pipe(gulp.dest('./build/views'));
+});
+
 gulp.task('stylesheets', function() {
   return gulp.src(paths.scss)
     .pipe(sass({
@@ -51,9 +59,10 @@ gulp.task('watch', function() {
   gulp.watch(paths.scss, ['stylesheets']);
   gulp.watch(paths.js, ['javascripts']);
   gulp.watch('index.html', notifyLiveReload);
+  gulp.watch('./build/assets/javascripts/*.js', notifyLiveReload);
   gulp.watch('./build/assets/stylesheets/*.css', notifyLiveReload);
 });
 
-gulp.task('default', ['stylesheets', 'javascripts', 'express', 'livereload', 'watch'], function() {
+gulp.task('default', ['views', 'stylesheets', 'javascripts', 'express', 'livereload', 'watch'], function() {
 
 });
