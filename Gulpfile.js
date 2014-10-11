@@ -14,7 +14,7 @@ gulp.task('express', function() {
   var express = require('express');
   var app = express();
   app.use(require('connect-livereload')({port: 4002}));
-  app.use(express.static(__dirname));
+  app.use(express.static('./build'));
   app.listen(4000);
 });
 
@@ -25,7 +25,7 @@ gulp.task('livereload', function() {
 });
 
 function notifyLiveReload(event) {
-  var fileName = require('path').relative(__dirname, event.path);
+  var fileName = require('path').relative('./', event.path);
 
   livereload.changed({
     body: {
@@ -37,14 +37,13 @@ function notifyLiveReload(event) {
 gulp.task('views', function () {
   gulp.src(paths.haml)
     .pipe(haml())
-    .pipe(gulp.dest('./build/views'));
+    .pipe(gulp.dest('./build'));
 });
 
 gulp.task('stylesheets', function() {
   return gulp.src(paths.scss)
     .pipe(sass({
-      loadPath: ['styles'].concat(neat),
-      sourceMap: true,
+      loadPath: ['styles'].concat(neat)
     }))
     .pipe(gulp.dest('./build/assets/stylesheets'));
 });
