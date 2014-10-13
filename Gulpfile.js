@@ -55,9 +55,10 @@ gulp.task('javascripts', function() {
 });
 
 gulp.task('watch', function() {
+  gulp.watch(paths.haml, ['views']);
   gulp.watch(paths.scss, ['stylesheets']);
   gulp.watch(paths.js, ['javascripts']);
-  gulp.watch('index.html', notifyLiveReload);
+  gulp.watch('./build/*.html', notifyLiveReload);
   gulp.watch('./build/assets/javascripts/*.js', notifyLiveReload);
   gulp.watch('./build/assets/stylesheets/*.css', notifyLiveReload);
 });
