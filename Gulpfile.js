@@ -43,7 +43,7 @@ gulp.task('views', function () {
 gulp.task('stylesheets', function() {
   return gulp.src(paths.scss)
     .pipe(sass({
-      loadPath: ['styles'].concat(neat)
+      loadPath: [paths.scss].concat(neat)
     }))
     .pipe(gulp.dest('./build/assets/stylesheets'));
 });
