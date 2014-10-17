@@ -30,14 +30,14 @@ We also recommend [Refills](http://refills.bourbon.io/) for prepackaged interfac
 
 Getting Started
 ---------------
+Install the dependencies
+```
+npm install
+```
+
 Run the server
 ```
 gulp
-```
-
-Deploy to Github Pages
-```
-gulp deploy
 ```
 
 Stylesheets, images and javascript files go in the `/source/assets/` directory.
@@ -70,5 +70,5 @@ License
 
 The names and logos for thoughtbot are trademarks of thoughtbot, inc.
 
-Carnival is Copyright © 2014 thoughtbot, inc. It is free software, and may be
+Proteus Node is Copyright © 2014 thoughtbot, inc. It is free software, and may be
 redistributed under the terms specified in the LICENSE file.
