@@ -1,15 +1,20 @@
 var gulp = require('gulp'),
+  include = require('gulp-include'),
   concat = require('gulp-concat'),
   haml = require('gulp-ruby-haml'),
   sass = require('gulp-ruby-sass'),
-  neat = require('node-neat').includePaths;
+  neat = require('node-neat').includePaths,
+  sourcemaps = require('gulp-sourcemaps'),
+  coffee = require('gulp-coffee'),
+  deploy = require('gulp-gh-pages');
 
 var paths = {
   haml: './source/views/*.haml',
-  js: './source/assets/javascripts/*.js',
-  scss: './source/assets/stylesheets/*.scss'
+  coffee: './source/assets/javascripts/**/*.coffee',
+  scss: './source/assets/stylesheets/**/*.scss'
 };
 
+// Server
 gulp.task('express', function() {
   var express = require('express');
   var app = express();
@@ -18,6 +23,36 @@ gulp.task('express', function() {
   app.listen(4000);
 });
 
+// Haml templates
+gulp.task('views', function () {
+  gulp.src(paths.haml)
+    .pipe(haml())
+    .pipe(gulp.dest('./build'));
+});
+
+// Scss stylesheets
+gulp.task('stylesheets', function() {
+  return gulp.src(paths.scss)
+    .pipe(sass({
+      loadPath: [paths.scss].concat(neat)
+    }))
+    .pipe(gulp.dest('./build/assets/stylesheets'));
+});
+
+// Coffeescript
+gulp.task('javascripts', function() {
+  return gulp.src(paths.coffee)
+    .pipe(sourcemaps.init())
+    .pipe(include())
+    .pipe(coffee())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./build/assets/javascripts'));
+});
+
+coffeeStream = coffee({bare: true});
+coffeeStream.on('error', function(err) {});
+
+// Live Previews
 var livereload;
 gulp.task('livereload', function() {
   livereload = require('tiny-lr')();
@@ -34,35 +69,22 @@ function notifyLiveReload(event) {
   });
 }
 
-gulp.task('views', function () {
-  gulp.src(paths.haml)
-    .pipe(haml())
-    .pipe(gulp.dest('./build'));
-});
-
-gulp.task('stylesheets', function() {
-  return gulp.src(paths.scss)
-    .pipe(sass({
-      loadPath: [paths.scss].concat(neat)
-    }))
-    .pipe(gulp.dest('./build/assets/stylesheets'));
-});
-
-gulp.task('javascripts', function() {
-  return gulp.src(paths.js)
-    .pipe(concat('application.js'))
-    .pipe(gulp.dest('./build/assets/javascripts'));
-});
-
 gulp.task('watch', function() {
   gulp.watch(paths.haml, ['views']);
   gulp.watch(paths.scss, ['stylesheets']);
-  gulp.watch(paths.js, ['javascripts']);
+  gulp.watch(paths.coffee, ['javascripts']);
   gulp.watch('./build/*.html', notifyLiveReload);
-  gulp.watch('./build/assets/javascripts/*.js', notifyLiveReload);
   gulp.watch('./build/assets/stylesheets/*.css', notifyLiveReload);
+  gulp.watch('./build/assets/javascripts/*.js', notifyLiveReload);
 });
 
+// Run
 gulp.task('default', ['views', 'stylesheets', 'javascripts', 'express', 'livereload', 'watch'], function() {
 
+});
+
+// Deploy
+gulp.task('deploy', function () {
+  return gulp.src("./build/**/*")
+    .pipe(deploy())
 });
