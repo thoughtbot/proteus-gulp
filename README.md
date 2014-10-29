@@ -31,8 +31,11 @@ We also recommend [Refills](http://refills.bourbon.io/) for prepackaged interfac
 
 Getting Started
 ---------------
-Install the dependencies
+Set up your project in your code directory
 ```
+git clone git@github.com:thoughtbot/proteus-middleman.git [your-project-name]
+git remote rm origin
+git remote add origin [your-repo-url]
 npm install
 ```
 
