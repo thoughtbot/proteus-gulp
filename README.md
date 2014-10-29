@@ -41,6 +41,11 @@ Run the server
 gulp
 ```
 
+Deploy to Github Pages
+```
+gulp deploy
+```
+
 Stylesheets, images and javascript files go in the `/source/assets/` directory.
 Vendor stylesheets and javascripts should go in each of their `/vendor/` directories.
 
@@ -48,13 +53,13 @@ Issues
 ------
 
 If you have problems, please create a
-[GitHub Issue](https://github.com/thoughtbot/proteus-gulp/issues).
-
-Have a fix or want to add a feature? Open a
-[Pull Request](https://github.com/thoughtbot/proteus-gulp/pulls)
+[GitHub Issue](https://github.com/thoughtbot/proteus-gulp/issues)
 
 Contributing
 ------------
+
+Have a fix or want to add a feature? Open a
+[Pull Request](https://github.com/thoughtbot/proteus-gulp/pulls)
 
 
 Credits
