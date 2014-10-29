@@ -12,6 +12,7 @@ About Gulp & Node
 
 Includes
 --------
+* [Gulp](http://gulpjs.com): Converts files and task running
 * [HAML](http://haml.info):
   Simple template markup
 * [Coffeescript](http://coffeescript.org):
@@ -24,7 +25,6 @@ Includes
   Semantic grid for Sass and Bourbon
 * [Bitters](http://bitters.bourbon.io):
   Scaffold styles, variables and structure for Bourbon projects.
-* [Gulp](http://gulpjs.com): Converts files and task running
 * [Express](http://expressjs.com): Lightweight Node web server
 
 We also recommend [Refills](http://refills.bourbon.io/) for prepackaged interface patterns

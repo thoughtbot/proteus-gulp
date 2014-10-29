@@ -11,7 +11,9 @@ var gulp = require('gulp'),
 var paths = {
   haml: './source/views/*.haml',
   coffee: './source/assets/javascripts/**/*.coffee',
-  scss: './source/assets/stylesheets/**/*.scss'
+  scss: './source/assets/stylesheets/**/*.scss',
+  images: './source/assets/images/*',
+  fonts: './source/assets/fonts/*'
 };
 
 // Server
@@ -52,6 +54,18 @@ gulp.task('javascripts', function() {
 coffeeStream = coffee({bare: true});
 coffeeStream.on('error', function(err) {});
 
+// Copy images
+gulp.task('images', function () {
+  gulp.src(paths.images)
+    .pipe(gulp.dest('./build/assets/images'));
+});
+
+// Copy fonts
+gulp.task('fonts', function () {
+  gulp.src(paths.fonts)
+    .pipe(gulp.dest('./build/assets/fonts'));
+});
+
 // Live Previews
 var livereload;
 gulp.task('livereload', function() {
@@ -73,13 +87,17 @@ gulp.task('watch', function() {
   gulp.watch(paths.haml, ['views']);
   gulp.watch(paths.scss, ['stylesheets']);
   gulp.watch(paths.coffee, ['javascripts']);
+  gulp.watch(paths.images, ['images']);
+  gulp.watch(paths.fonts, ['fonts']);
   gulp.watch('./build/*.html', notifyLiveReload);
   gulp.watch('./build/assets/stylesheets/*.css', notifyLiveReload);
   gulp.watch('./build/assets/javascripts/*.js', notifyLiveReload);
+  gulp.watch('./build/assets/images/*', notifyLiveReload);
+  gulp.watch('./build/assets/fonts/*', notifyLiveReload);
 });
 
 // Run
-gulp.task('default', ['views', 'stylesheets', 'javascripts', 'express', 'livereload', 'watch'], function() {
+gulp.task('default', ['views', 'stylesheets', 'javascripts', 'images', 'fonts', 'express', 'livereload', 'watch'], function() {
 
 });
 
