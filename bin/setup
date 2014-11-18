@@ -2,5 +2,26 @@
 
 # Run this script immediately after cloning the codebase.
 
+#!/usr/bin/env sh
+
+# Run this script immediately after cloning the codebase.
+
+# Make sure Bundler is installed
+if ! type npm > /dev/null; then
+ echo -e "Installing NPM..."
+ curl -L https://npmjs.org/install.sh | sh
+fi
+
 # Set up NPM dependencies
+echo -e "Installing Dependencies..."
 npm install
+
+# Remove Git remote if it's still the proteus-middleman repo
+if [ `git config --get remote.origin.url` = "git@github.com:thoughtbot/proteus-gulp.git" ]; then
+  echo -e "What is your repo url? Enter URL or leave blank"
+  read url
+  if [ ! $url = '' ]; then
+    git remote rm origin
+    git remote add origin $url
+  fi
+fi
