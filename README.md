@@ -31,6 +31,14 @@ We also recommend [Refills](http://refills.bourbon.io/) for prepackaged interfac
 
 Getting Started
 ---------------
+Set up your project in your code directory
+```
+git clone git@github.com:thoughtbot/proteus-jekyll.git your-project-folder
+cd your-project-folder
+git remote rm origin
+git remote add origin your-repo-url
+```
+
 Install the dependencies
 ```
 npm install
@@ -46,18 +54,17 @@ Deploy to Github Pages
 gulp deploy
 ```
 
+Or clone the repo and use these handy shortcuts: `. bin/setup`, `. bin/server` and `. bin/deploy`
+
 Stylesheets, images, fonts, and javascript files go in the `/source/assets/` directory.
 Vendor stylesheets and javascripts should go in each of their `/vendor/` directories.
 The source folders for images and fonts have a `.keep` file in them so they can be in the repo, but you can remove those files.
 
-Issues
-------
+Contributing
+------------
 
 If you have problems, please create a
 [GitHub Issue](https://github.com/thoughtbot/proteus-gulp/issues)
-
-Contributing
-------------
 
 Have a fix or want to add a feature? Open a
 [Pull Request](https://github.com/thoughtbot/proteus-gulp/pulls)
