@@ -33,9 +33,9 @@ Getting Started
 ---------------
 Set up your project in your code directory
 ```
-git clone git@github.com:thoughtbot/proteus-middleman.git [your-project-name]
-git remote rm origin
-git remote add origin [your-repo-url]
+git clone --bare git@github.com:thoughtbot/proteus-gulp.git your-project-folder
+cd your-project-folder
+git init
 npm install
 ```
 
@@ -48,6 +48,8 @@ Deploy to Github Pages
 ```
 gulp deploy
 ```
+
+Or clone the repo and use these handy shortcuts: `. bin/setup`, `. bin/server` and `. bin/deploy`
 
 Stylesheets, images, fonts, and javascript files go in the `/source/assets/` directory.
 Vendor stylesheets and javascripts should go in each of their `/vendor/` directories.
