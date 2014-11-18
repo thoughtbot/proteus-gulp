@@ -54,7 +54,7 @@ Deploy to Github Pages
 gulp deploy
 ```
 
-Or clone the repo and use these handy shortcuts: `. bin/setup`, `. bin/server` and `. bin/deploy`
+Or install the [Proteus gem](https://github.com/thoughtbot/proteus) and enjoy some shortcuts. 
 
 Stylesheets, images, fonts, and javascript files go in the `/source/assets/` directory.
 Vendor stylesheets and javascripts should go in each of their `/vendor/` directories.
