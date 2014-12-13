@@ -33,7 +33,7 @@ Getting Started
 ---------------
 Set up your project in your code directory
 ```
-git clone git@github.com:thoughtbot/proteus-jekyll.git your-project-folder
+git clone git@github.com:thoughtbot/proteus-gulp.git your-project-folder
 cd your-project-folder
 git remote rm origin
 git remote add origin your-repo-url
