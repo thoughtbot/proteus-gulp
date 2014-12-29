@@ -21,8 +21,7 @@
   },
   "homepage": "https://github.com/thoughtbot/proteus-node",
   "dependencies": {
-    "express": "~ 4.9.6",
-    "tiny-lr": "~ 0.1.4",
+    "browser-sync": "~ 1.8.0",
     "gulp": "~ 3.8.8",
     "gulp-concat": "~ 2.4.1",
     "gulp-ruby-haml": "~0.0.3",

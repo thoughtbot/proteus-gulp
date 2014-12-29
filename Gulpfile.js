@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+  browsersync = require('browser-sync'),
   include = require('gulp-include'),
   concat = require('gulp-concat'),
   haml = require('gulp-ruby-haml'),
@@ -15,15 +16,6 @@ var paths = {
   images: './source/assets/images/*',
   fonts: './source/assets/fonts/*'
 };
-
-// Server
-gulp.task('express', function() {
-  var express = require('express');
-  var app = express();
-  app.use(require('connect-livereload')({port: 4002}));
-  app.use(express.static('./build'));
-  app.listen(4000);
-});
 
 // Haml templates
 gulp.task('views', function () {
@@ -66,22 +58,17 @@ gulp.task('fonts', function () {
     .pipe(gulp.dest('./build/assets/fonts'));
 });
 
-// Live Previews
-var livereload;
-gulp.task('livereload', function() {
-  livereload = require('tiny-lr')();
-  livereload.listen(4002);
-});
-
-function notifyLiveReload(event) {
-  var fileName = require('path').relative('./', event.path);
-
-  livereload.changed({
-    body: {
-      files: [fileName]
-    }
+// Server
+gulp.task('server', function() {
+  browsersync({
+    server: {
+      baseDir: "./build",
+      port: 4000
+    },
+    notify: false,
+    open: false
   });
-}
+});
 
 gulp.task('watch', function() {
   gulp.watch(paths.haml, ['views']);
@@ -89,15 +76,15 @@ gulp.task('watch', function() {
   gulp.watch(paths.coffee, ['javascripts']);
   gulp.watch(paths.images, ['images']);
   gulp.watch(paths.fonts, ['fonts']);
-  gulp.watch('./build/*.html', notifyLiveReload);
-  gulp.watch('./build/assets/stylesheets/*.css', notifyLiveReload);
-  gulp.watch('./build/assets/javascripts/*.js', notifyLiveReload);
-  gulp.watch('./build/assets/images/*', notifyLiveReload);
-  gulp.watch('./build/assets/fonts/*', notifyLiveReload);
+  gulp.watch('./build/*.html', browsersync.reload);
+  gulp.watch('./build/assets/stylesheets/*.css', browsersync.reload);
+  gulp.watch('./build/assets/javascripts/*.js', browsersync.reload);
+  gulp.watch('./build/assets/images/*', browsersync.reload);
+  gulp.watch('./build/assets/fonts/*', browsersync.reload);
 });
 
 // Run
-gulp.task('default', ['views', 'stylesheets', 'javascripts', 'images', 'fonts', 'express', 'livereload', 'watch'], function() {
+gulp.task('default', ['views', 'stylesheets', 'javascripts', 'images', 'fonts', 'server', 'watch'], function() {
 
 });
 
