@@ -1,35 +1,38 @@
 {
-  "name": "proteus-node",
+  "name": "proteus-gulp",
   "version": "0.0.1",
-  "description": "Prototype starter kit for Node",
+  "description": "Prototype starter kit for Gulp",
   "main": "Gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thoughtbot/proteus-node.git"
+    "url": "https://github.com/thoughtbot/proteus-gulp.git"
   },
   "keywords": [
     "prototyping",
     "node"
   ],
-  "author": "thoughtbot",
+  "author": {
+    "name": "thoughtbot",
+    "url": "http://thoughtbot.com"
+  },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/thoughtbot/proteus-node/issues"
+    "url": "https://github.com/thoughtbot/proteus-gulp/issues"
   },
-  "homepage": "https://github.com/thoughtbot/proteus-node",
+  "homepage": "http://thoughtbot.github.io/proteus",
   "dependencies": {
     "browser-sync": "~ 1.8.0",
     "gulp": "~ 3.8.8",
+    "gulp-coffee": "~ 2.2.0",
     "gulp-concat": "~ 2.4.1",
+    "gulp-gh-pages": "~ 0.4.0",
+    "gulp-include": "~ 1.1.0",
     "gulp-ruby-haml": "~0.0.3",
     "gulp-ruby-sass": "~ 0.7.1",
-    "node-neat": "~ 1.3.0",
-    "gulp-coffee": "~ 2.2.0",
     "gulp-sourcemaps": "~ 1.2.4",
-    "gulp-include": "~ 1.1.0",
-    "gulp-gh-pages": "~ 0.4.0"
+    "node-neat": "~ 1.3.0"
   }
 }
