@@ -6,10 +6,6 @@ starter kits to help you prototype faster. It follows the
 [thoughtbot styleguide](https://github.com/thoughtbot/guides) and includes our
 favorite front end tools.
 
-About Gulp & Node
----------------
-
-
 Includes
 --------
 * [Gulp](http://gulpjs.com): Converts files and task running
@@ -27,7 +23,7 @@ Includes
   Scaffold styles, variables and structure for Bourbon projects.
 * [Express](http://expressjs.com): Lightweight Node web server
 
-We also recommend [Refills](http://refills.bourbon.io/) for prepackaged interface patterns
+We also recommend [Refills](http://refills.bourbon.io/) for prepackaged interface patterns.
 
 Getting Started
 ---------------
@@ -54,7 +50,7 @@ Deploy to Github Pages
 gulp deploy
 ```
 
-Or install the [Proteus gem](https://github.com/thoughtbot/proteus) and enjoy some shortcuts. 
+Or install the [Proteus gem](https://github.com/thoughtbot/proteus) and enjoy some shortcuts.
 
 Stylesheets, images, fonts, and javascript files go in the `/source/assets/` directory.
 Vendor stylesheets and javascripts should go in each of their `/vendor/` directories.
@@ -73,7 +69,7 @@ Have a fix or want to add a feature? Open a
 Credits
 -------
 
-![thoughtbot](http://thoughtbot.com/logo.png)
+[![thoughtbot](http://images.thoughtbot.com/bourbon/thoughtbot-logo.svg)](http://thoughtbot.com)
 
 This application is maintained and funded by [thoughtbot, inc](http://thoughtbot.com/community)
 
