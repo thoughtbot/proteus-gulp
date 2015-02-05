@@ -91,5 +91,7 @@ gulp.task('default', ['views', 'stylesheets', 'javascripts', 'images', 'fonts', 
 // Deploy
 gulp.task('deploy', function () {
   return gulp.src("./build/**/*")
-    .pipe(deploy())
+    .pipe(deploy({
+      branch: "master"
+    }));
 });

@@ -2,10 +2,6 @@
 
 # Run this script immediately after cloning the codebase.
 
-# Squash all commits to get a clean slate
-git update-ref -d refs/heads/master
-git commit -am "New Proteus-Gulp project"
-
 # Make sure npm is installed
 if ! type npm > /dev/null; then
  echo "Installing npm..."
