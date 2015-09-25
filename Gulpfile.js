@@ -1,13 +1,15 @@
 var gulp = require('gulp'),
+  autoprefixer = require('gulp-autoprefixer'),
+  bourbon = require('node-bourbon'),
   browsersync = require('browser-sync'),
-  include = require('gulp-include'),
   concat = require('gulp-concat'),
-  haml = require('gulp-ruby-haml'),
-  sass = require('gulp-ruby-sass'),
-  neat = require('node-neat').includePaths,
-  sourcemaps = require('gulp-sourcemaps'),
   coffee = require('gulp-coffee'),
-  deploy = require('gulp-gh-pages');
+  deploy = require('gulp-gh-pages'),
+  haml = require('gulp-ruby-haml'),
+  include = require('gulp-include'),
+  neat = require('node-neat').includePaths,
+  sass = require('gulp-ruby-sass'),
+  sourcemaps = require('gulp-sourcemaps');
 
 var paths = {
   haml: './source/views/*.haml',
@@ -28,8 +30,10 @@ gulp.task('views', function () {
 gulp.task('stylesheets', function() {
   return gulp.src(paths.scss)
     .pipe(sass({
-      loadPath: [paths.scss].concat(neat)
+      loadPath: [paths.scss].concat(neat),
+      "sourcemap=none": true
     }))
+    .pipe(autoprefixer())
     .pipe(gulp.dest('./build/assets/stylesheets'));
 });
 
