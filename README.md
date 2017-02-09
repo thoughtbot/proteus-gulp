@@ -1,5 +1,7 @@
 # Proteus - Gulp
 
+**Note:** This project is no longer being actively maintained.
+
 ## About Proteus
 [Proteus](http://github.com/thoughtbot/proteus) is a collection of useful
 starter kits to help you prototype faster. It follows the
